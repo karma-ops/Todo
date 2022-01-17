@@ -1,8 +1,5 @@
-# todo
 
-Todo App
-
-## Getting Started
+## Getting Started with Todo
 
 This app lets you add tasks and manage it. It has different features like add, delete, update, sort, reminders etc.
 
