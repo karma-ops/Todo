@@ -90,7 +90,7 @@ bottomNavigation(
                                                 listen: false)
                                             .rHours,
                                         'scheduled',
-                                        '');
+                                        widget.taskIndex);
                                     Navigator.pop(context);
                                   },
                                   child: Container(

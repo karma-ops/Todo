@@ -71,11 +71,11 @@ class _DetailState extends State<Detail> {
   }
 
   Future showNotification(
-      seconds, minutes, hours, reminderType, periodicTime, id) async {
+      seconds, minutes, hours, reminderType, periodicTime) async {
     const sound = "notification_sound.wav";
     var todoProvider = Provider.of<TodoProvider>(context, listen: false);
     var androidDetails = AndroidNotificationDetails(
-      'Channel id 1',
+      'Channel id',
       'Todo',
       channelDescription: 'Channel for todo',
       importance: Importance.max,
