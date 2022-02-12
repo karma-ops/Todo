@@ -71,11 +71,18 @@ class _DetailState extends State<Detail> {
   }
 
   Future showNotification(
-      seconds, minutes, hours, reminderType, periodicTime) async {
+      seconds, minutes, hours, reminderType, periodicTime, id) async {
+    const sound = "notification_sound.wav";
     var todoProvider = Provider.of<TodoProvider>(context, listen: false);
-    var androidDetails = const AndroidNotificationDetails('id', 'Todo',
-        channelDescription: 'Channel for todo', importance: Importance.max);
-    var iosDetails = const IOSNotificationDetails();
+    var androidDetails = AndroidNotificationDetails(
+      'Channel id 1',
+      'Todo',
+      channelDescription: 'Channel for todo',
+      importance: Importance.max,
+      playSound: true,
+      sound: RawResourceAndroidNotificationSound(sound.split('.').first),
+    );
+    var iosDetails = const IOSNotificationDetails(sound: sound);
     var notificationDetails =
         NotificationDetails(android: androidDetails, iOS: iosDetails);
     var scheduledTime = DateTime.now().add(Duration(
