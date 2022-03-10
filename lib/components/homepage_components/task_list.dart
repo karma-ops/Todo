@@ -90,37 +90,38 @@ Expanded taskList() {
                             ],
                           ),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Scrollbar(
-                          showTrackOnHover: true,
-                          child: ListView.builder(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 5, vertical: 5),
-                              shrinkWrap: true,
-                              physics: const BouncingScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                if (todoData.sortValue == 'Completed tasks') {
-                                  return todoData.taskList[index].status == true
-                                      ? listView(context, index, todoData)
-                                      : const SizedBox();
-                                } else if (todoData.sortValue ==
-                                    'Incomplete tasks') {
-                                  return todoData.taskList[index].status ==
-                                          false
-                                      ? listView(context, index, todoData)
-                                      : const SizedBox();
-                                } else if (todoData.sortValue ==
-                                    'Pinned tasks') {
-                                  return todoData.taskList[index].pinned == true
-                                      ? listView(context, index, todoData)
-                                      : const SizedBox();
-                                } else {
-                                  return listView(context, index, todoData);
-                                }
-                              },
-                              itemCount: todoData.taskList.length),
+                        Expanded(
+                          child: Scrollbar(
+                            showTrackOnHover: true,
+                            child: ListView.builder(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 5, vertical: 5),
+                                shrinkWrap: true,
+                                physics: const BouncingScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  if (todoData.sortValue == 'Completed tasks') {
+                                    return todoData.taskList[index].status ==
+                                            true
+                                        ? listView(context, index, todoData)
+                                        : const SizedBox();
+                                  } else if (todoData.sortValue ==
+                                      'Incomplete tasks') {
+                                    return todoData.taskList[index].status ==
+                                            false
+                                        ? listView(context, index, todoData)
+                                        : const SizedBox();
+                                  } else if (todoData.sortValue ==
+                                      'Pinned tasks') {
+                                    return todoData.taskList[index].pinned ==
+                                            true
+                                        ? listView(context, index, todoData)
+                                        : const SizedBox();
+                                  } else {
+                                    return listView(context, index, todoData);
+                                  }
+                                },
+                                itemCount: todoData.taskList.length),
+                          ),
                         )
                       ],
                     ),
@@ -153,6 +154,7 @@ listView(context, index, todoData) {
             todoData.unDo(index);
           }
         }
+        return null;
       },
       child: Container(
         margin: index == 0
